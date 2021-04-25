@@ -2,14 +2,13 @@
 
 function arrayFlat(arr) {
     let result = [...arr];
+	let idx;
 
-    while (part = result.find(item => Array.isArray(item))) {
-        const index = result.indexOf(part);
+	while((idx = result.findIndex(item => Array.isArray(item))) !== -1) {
+	    result = result.slice(0, idx).concat(result[idx]).concat(result.slice(idx + 1));
+	}
 
-        result = result.slice(0, index).concat(part).concat(result.slice(index + 1));
-    }
-
-    return result;
+	return result;
 }
 
 const a = [1,2,3,[4,5,[6,7,8,9]],10,11,12,13,[14,15]];
