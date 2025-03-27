@@ -13,7 +13,7 @@ function areAnagrams(a, b) {
 	    return false;
 	}
 
-	for (letter in dictA) {
+	for (let letter in dictA) {
         if (!dictB[letter]) {
 		    return false;
 		}
@@ -30,7 +30,7 @@ function toDict(str) {
     const dict = Object.create(null);
 	const arr = str.split('');
 
-	for (letter of arr) {
+	for (let letter of arr) {
 	    dict[letter] = dict[letter] ? ++dict[letter] : 1;
 		
 	}
