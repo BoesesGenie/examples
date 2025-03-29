@@ -3,47 +3,27 @@
  * @return {string}
  */
 const longestPalindrome = function(s) {
-  if (s.length === 1) {
-    return s;
-  }
+  let left = 0;
+  let right = 0;
+  let length = 0;
 
-  if (s.length === 2 && s[0] === s[1]) {
-    return s;
-  }
-
-  if (s.length === 2) {
-    return s[0];
-  }
-
-  let leftIdx = leftBorder = 0;
-  let rightIdx = rightBorder = s.length - 1;
-  let isPalindrome = false;
-  let offset;
-
-  while (true) {
-    offset = s.length - 1 - rightBorder;
-    leftIdx = leftBorder + offset;
-    rightIdx = rightBorder + offset;
-
-    do {
-      if (rightIdx - leftIdx <= 1 && s[leftIdx] === s[rightIdx]) {
-        return s.slice(leftBorder + offset, rightBorder + offset + 1);
+  const findPalindrome = (leftIdx, rightIdx) => {
+    while (leftIdx >= 0 && rightIdx < s.length && s[leftIdx] === s[rightIdx]) {
+      if (length < rightIdx - leftIdx + 1) {
+        left = leftIdx;
+        right = rightIdx + 1;
+        length = rightIdx - leftIdx + 1;
       }
 
-      isPalindrome = s[leftIdx] === s[rightIdx];
-
-      if (isPalindrome) {
-        leftIdx++;
-        rightIdx--;
-
-        continue;
-      }
-
-      offset--;
-      leftIdx = leftBorder + offset;
-      rightIdx = rightBorder + offset;
-    } while (offset >= 0);
-
-    rightBorder--;
+      leftIdx--;
+      rightIdx++;
+    }
   }
+
+  for (let i = 0; i < s.length; i++) {
+    findPalindrome(i, i);
+    findPalindrome(i, i + 1);
+  }
+
+  return s.slice(left, right);
 };
