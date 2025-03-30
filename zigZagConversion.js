@@ -3,7 +3,7 @@
  * @param {number} numRows
  * @return {string}
  */
-var convert = function(s, numRows) {
+const zigZagConversion = function(s, numRows) {
   if (numRows === 1 || numRows >= s.length) {
     return s;
   }
@@ -25,6 +25,6 @@ var convert = function(s, numRows) {
   return rows.join('');
 };
 
-console.log(convert('PAYPALISHIRING', 4)); // 'PINALSIGYAHRPI'
-console.log(convert('A', 1)); // 'A'
-console.log(convert('AB', 1)); // 'A'
+console.log(zigZagConversion('PAYPALISHIRING', 4)); // 'PINALSIGYAHRPI'
+console.log(zigZagConversion('A', 1)); // 'A'
+console.log(zigZagConversion('AB', 1)); // 'A'
