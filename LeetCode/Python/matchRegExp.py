@@ -75,7 +75,7 @@ class Solution:
         elif self.s_left == self.s_right and self.p[self.p_index] == self.s[self.s_left]:
             self.s_left += 1
             self.s_right += 1
-        elif self.s_left != self.s_right:
+        elif self.s_left < self.s_right:
             while self.s_left < self.s_right and self.p[self.p_index] != self.s[self.s_left]:
                 self.s_left += 1
 
