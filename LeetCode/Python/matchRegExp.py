@@ -34,7 +34,6 @@ class Solution:
             self.status = True
 
         elif self.p_index == len(self.p) and self.s_right < len(self.s):
-            # print(self.s_left, self.s_right, self.p_index)
             self.completed = True
             self.status = False
 
@@ -62,8 +61,7 @@ class Solution:
             self.s_left += 1
             self.s_right += 1
         else:
-            while self.s_left < self.s_right:
-                self.s_left += 1
+            self.s_left = self.s_right
 
             self.s_left += 1
             self.s_right = max(self.s_right, self.s_left)
@@ -109,39 +107,39 @@ class Solution:
 
 solution = Solution()
 
-# print(solution.match_reg_exp('abc', 'abc') == True)
-# print(solution.match_reg_exp('abc', '.*') == True)
-# print(solution.match_reg_exp('abc', '...') == True)
-# print(solution.match_reg_exp('abc', '..') == False)
-# print(solution.match_reg_exp('abc', '....') == False)
-# print(solution.match_reg_exp('abc', 'abd') == False)
-# print(solution.match_reg_exp('abc', 'cbc') == False)
-# print(solution.match_reg_exp('abc', '.bc') == True)
-# print(solution.match_reg_exp('abc', 'a.c') == True)
-# print(solution.match_reg_exp('abc', 'ab.') == True)
-# print(solution.match_reg_exp('abc', '..c') == True)
-# print(solution.match_reg_exp('abc', '.*c') == True)
-# print(solution.match_reg_exp('asdfasdfabc', '.*abc') == True)
-# print(solution.match_reg_exp('asdfasdfabc', '........abc') == True)
-# print(solution.match_reg_exp('asdfasdfabc', '.......abc') == False)
-# print(solution.match_reg_exp('asdfamdfabc', 'asd.*abc') == True)
-# print(solution.match_reg_exp('asdfasdfabc', 'asd.*abc') == True)
-# print(solution.match_reg_exp('asdfasdfabc', 'asd.*') == True)
-# print(solution.match_reg_exp('asm', '.*asd') == False)
-# print(solution.match_reg_exp('aa', 'a') == False)
-# print(solution.match_reg_exp('mississippi', 'mis*is*ip*.') == True)
-# print(solution.match_reg_exp('abcd', 'd*') == False)
-# print(solution.match_reg_exp('aaa', 'aaaa') == False)
-# print(solution.match_reg_exp('a', 'ab*a') == False)
-# print(solution.match_reg_exp('asd', 'asd.*') == True)
-# print(solution.match_reg_exp('abb', 'bbb*') == False)
-# print(solution.match_reg_exp('asd', '.*asd') == True)
-# print(solution.match_reg_exp('aa', 'a*') == True)
-# print(solution.match_reg_exp('aa', '.*..a*') == False)
-# print(solution.match_reg_exp('aaa', 'ab*a*c*a') == True)
-# print(solution.match_reg_exp('aab', 'c*a*b') == True)
-# print(solution.match_reg_exp('a', 'c*a') == True)
-# print(solution.match_reg_exp('aba', '.*.*') == True)
-# print(solution.match_reg_exp('bab', '..*') == True)
-# print(solution.match_reg_exp('baba', 'b*.*') == True)
+print(solution.match_reg_exp('abc', 'abc') == True)
+print(solution.match_reg_exp('abc', '.*') == True)
+print(solution.match_reg_exp('abc', '...') == True)
+print(solution.match_reg_exp('abc', '..') == False)
+print(solution.match_reg_exp('abc', '....') == False)
+print(solution.match_reg_exp('abc', 'abd') == False)
+print(solution.match_reg_exp('abc', 'cbc') == False)
+print(solution.match_reg_exp('abc', '.bc') == True)
+print(solution.match_reg_exp('abc', 'a.c') == True)
+print(solution.match_reg_exp('abc', 'ab.') == True)
+print(solution.match_reg_exp('abc', '..c') == True)
+print(solution.match_reg_exp('abc', '.*c') == True)
+print(solution.match_reg_exp('asdfasdfabc', '.*abc') == True)
+print(solution.match_reg_exp('asdfasdfabc', '........abc') == True)
+print(solution.match_reg_exp('asdfasdfabc', '.......abc') == False)
+print(solution.match_reg_exp('asdfamdfabc', 'asd.*abc') == True)
+print(solution.match_reg_exp('asdfasdfabc', 'asd.*abc') == True)
+print(solution.match_reg_exp('asdfasdfabc', 'asd.*') == True)
+print(solution.match_reg_exp('asm', '.*asd') == False)
+print(solution.match_reg_exp('aa', 'a') == False)
+print(solution.match_reg_exp('mississippi', 'mis*is*ip*.') == True)
+print(solution.match_reg_exp('abcd', 'd*') == False)
+print(solution.match_reg_exp('aaa', 'aaaa') == False)
+print(solution.match_reg_exp('a', 'ab*a') == False)
+print(solution.match_reg_exp('asd', 'asd.*') == True)
+print(solution.match_reg_exp('abb', 'bbb*') == False)
+print(solution.match_reg_exp('aa', 'a*') == True)
+print(solution.match_reg_exp('aa', '.*..a*') == False)
+print(solution.match_reg_exp('aaa', 'ab*a*c*a') == True)
+print(solution.match_reg_exp('aab', 'c*a*b') == True)
+print(solution.match_reg_exp('a', 'c*a') == True)
+print(solution.match_reg_exp('aba', '.*.*') == True)
+print(solution.match_reg_exp('bab', '..*') == True)
+print(solution.match_reg_exp('baba', 'b*.*') == True)
+print(solution.match_reg_exp('asd', '.*asd') == True)
 print(solution.match_reg_exp('aaca', 'ab*a*c*a') == True)
