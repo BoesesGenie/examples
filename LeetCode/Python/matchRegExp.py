@@ -6,7 +6,7 @@ class Solution:
     p_index = 0
     s = ''
     p = ''
-    prev = (0, 0, 0)
+    state = [(0, 0, 0)]
 
     def initial_values(self):
         self.completed = False
@@ -16,9 +16,15 @@ class Solution:
         self.p_index = 0
         self.s = ''
         self.p = ''
-        self.prev = (0, 0, 0)
+        self.state = [(0, 0)]
+
+    def state_back(self):
+        self.state.pop()
+        self.s_left, self.s_right = self.state[-1]
 
     def update_state(self):
+        self.state.append((self.s_left, self.s_right))
+
         if self.s_right == len(self.s) and self.p_index == len(self.p):
             self.completed = True
             self.status = True
@@ -28,27 +34,23 @@ class Solution:
             self.status = True
 
         elif self.p_index == len(self.p) and self.s_right < len(self.s):
-            self.completed = True
-            self.status = False
-
-        elif self.p_index == len(self.p) and self.s_left > len(self.s):
             # print(self.s_left, self.s_right, self.p_index)
             self.completed = True
             self.status = False
 
-    def handle_mult(self):
-        check = self.p[self.p_index - 1]
+        elif self.p_index == len(self.p) and self.s_left > len(self.s):
+            self.completed = True
+            self.status = False
 
-        self.s_left -= 1
-        self.s_right -=1
+    def handle_mult(self):
+        self.state_back()
+        check = self.p[self.p_index - 1]
 
         while self.s_right < len(self.s):
             if check == '.' or check == self.s[self.s_right]:
                 self.s_right += 1
             else:
                 break
-
-        # print(self.s_left, self.s_right, self.p_index)
 
         self.p_index += 1
 
@@ -136,9 +138,10 @@ solution = Solution()
 # print(solution.match_reg_exp('asd', '.*asd') == True)
 # print(solution.match_reg_exp('aa', 'a*') == True)
 # print(solution.match_reg_exp('aa', '.*..a*') == False)
-print(solution.match_reg_exp('aaa', 'ab*a*c*a') == True)
+# print(solution.match_reg_exp('aaa', 'ab*a*c*a') == True)
 # print(solution.match_reg_exp('aab', 'c*a*b') == True)
 # print(solution.match_reg_exp('a', 'c*a') == True)
 # print(solution.match_reg_exp('aba', '.*.*') == True)
 # print(solution.match_reg_exp('bab', '..*') == True)
 # print(solution.match_reg_exp('baba', 'b*.*') == True)
+print(solution.match_reg_exp('aaca', 'ab*a*c*a') == True)
