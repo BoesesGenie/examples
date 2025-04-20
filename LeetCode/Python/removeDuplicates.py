@@ -2,6 +2,11 @@
 
 class Solution(object):
     def removeDuplicates(self, nums):
-        nums.pop(0)
+        j = 0
 
-        return len(nums)
+        for i in range(1, len(nums)):
+            if nums[i] != nums[j]:
+                j += 1
+                nums[j] = nums[i]
+
+        return j + 1
