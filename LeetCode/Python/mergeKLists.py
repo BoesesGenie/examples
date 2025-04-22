@@ -7,7 +7,7 @@
 #         self.next = next
 class Solution(object):
     def mergeKLists(self, lists):
-        lists = filter(lambda i: not i is None, lists)
+        lists = list(filter(lambda i: not i is None, lists))
 
         if len(lists) == 0:
             return None
