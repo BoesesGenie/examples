@@ -23,7 +23,7 @@ class Solution(object):
             min_value = lists[0].val
 
             for i in range(1, len(lists)):
-                if min_value >= lists[i].val:
+                if min_value > lists[i].val:
                     min_index = i
                     min_value = lists[i].val
 
