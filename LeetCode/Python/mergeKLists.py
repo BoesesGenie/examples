@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/merge-k-sorted-lists/
+import heapq
 
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -7,32 +8,23 @@
 #         self.next = next
 class Solution(object):
     def mergeKLists(self, lists):
-        lists = list(filter(lambda i: not i is None, lists))
-
-        if len(lists) == 0:
-            return None
-
-        if len(lists) == 1:
-            return lists[0]
-
         result = ListNode()
         current = result
+        heap = []
 
-        while len(lists):
-            min_index = 0
-            min_value = lists[0].val
+        for node in lists:
+            if not node:
+                continue
 
-            for i in range(1, len(lists)):
-                if min_value > lists[i].val:
-                    min_index = i
-                    min_value = lists[i].val
+            heapq.heappush(heap, (node.val, node))
 
-            current.next = lists[min_index]
-            current = current.next
+        while heap:
+            _, node = heapq.heappop(heap)
 
-            if lists[min_index].next is None:
-                lists.pop(min_index)
-            else:
-                lists[min_index] = lists[min_index].next
+            current.next = node
+            current = node
+
+            if node.next:
+                heapq.heappush(heap, (node.next.val, node.next))
 
         return result.next
